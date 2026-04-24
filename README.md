@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MRS Serviços e Informática | ERP Protheus & Automação com IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0A5FE8;--azul-esc:#062B6E;--ciano:#00D4FF;--verde:#00C896;--roxo:#7B5CEA;--bg:#04091A;--bg2:#070D21;--bg3:#0B1228;--texto:#E8EDF8;--muted:#7A8BAD;--borda:rgba(0,212,255,0.10);--grad:linear-gradient(135deg,#0A5FE8,#00D4FF);--grad-roxo:linear-gradient(135deg,#7B5CEA,#00D4FF)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--texto);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.35}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(4,9,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--borda)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.logo em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav ul{list-style:none;display:flex;gap:28px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:.83rem;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--ciano)}
+.nav-ia{color:var(--ciano)!important;font-weight:700!important}
+.nav-cta{background:var(--grad);color:#fff!important;padding:8px 18px;border-radius:7px;font-weight:600!important}
+@media(max-width:860px){nav ul{display:none}}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+.glow{position:absolute;border-radius:50%;pointer-events:none}
+.glow1{top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(10,95,232,.2) 0%,transparent 65%);animation:gp 7s ease-in-out infinite}
+.glow2{bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,200,150,.08) 0%,transparent 65%);animation:gp 9s ease-in-out infinite reverse}
+@keyframes gp{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.hero-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:5px 13px;border-radius:100px;font-size:.7rem;color:var(--ciano);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.pill::before{content:'';width:6px;height:6px;background:var(--ciano);border-radius:50%;animation:bl 2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.6vw,3.1rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px}
+.g{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.gp{background:var(--grad-roxo);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--muted);font-size:.97rem;line-height:1.75;margin-bottom:30px;max-width:480px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:8px;font-weight:600;font-size:.88rem;text-decoration:none;cursor:pointer;border:none;transition:transform .2s,opacity .2s}
+.btn:hover{transform:translateY(-2px);opacity:.9}
+.btn-p{background:var(--grad);color:#fff}
+.btn-o{background:transparent;color:var(--texto);border:1px solid rgba(255,255,255,.14)}
+.btn-o:hover{border-color:var(--ciano)}
+.btn-r{background:var(--grad-roxo);color:#fff}
+.hcard{background:linear-gradient(135deg,rgba(10,95,232,.14),rgba(0,212,255,.04));border:1px solid var(--borda);border-radius:20px;padding:26px;position:relative;overflow:hidden;max-width:370px;width:100%}
+.hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.clbl{font-size:.68rem;color:var(--ciano);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.mets{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.met{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:13px}
+.mn{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.ml{font-size:.68rem;color:var(--muted);margin-top:2px}
+.st{display:flex;align-items:center;gap:7px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.1);border-radius:7px;padding:9px 12px;font-size:.75rem;color:var(--muted)}
+.dot{width:6px;height:6px;background:#00FF88;border-radius:50%;box-shadow:0 0 6px #00FF88;animation:bl 2s infinite;flex-shrink:0}
+.fbadge{position:absolute;background:var(--bg3);border:1px solid var(--borda);border-radius:8px;padding:7px 13px;font-size:.73rem;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.4);white-space:nowrap}
+.fbadge.tl{top:-14px;left:-22px;color:var(--ciano);animation:f1 4s ease-in-out infinite}
+.fbadge.br{bottom:-14px;right:-22px;color:#A78BFA;animation:f2 5s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.hvis{display:flex;justify-content:center;align-items:center;position:relative}
+.strip{padding:24px 5%;background:var(--bg2);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);position:relative;z-index:1}
+.strip-in{display:flex;align-items:center;gap:18px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.slbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;white-space:nowrap;flex-shrink:0}
+.sdiv{width:1px;height:32px;background:var(--borda);flex-shrink:0}
+.stags{display:flex;gap:8px;flex-wrap:wrap}
+.stag{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:5px 11px;font-size:.7rem;font-weight:700;letter-spacing:.03em;color:rgba(255,255,255,.38);transition:color .2s,border-color .2s}
+.stag:hover{color:var(--ciano);border-color:rgba(0,212,255,.25)}
+.stag.ia{border-color:rgba(0,200,150,.2);color:var(--verde)}
+section{padding:88px 5%;position:relative;z-index:1}
+.mx{max-width:1200px;margin:0 auto}
+.stag2{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:9px}
+.stag2.az{color:var(--ciano)}
+.stag2.vd{color:var(--verde)}
+.stag2.rx{color:#A78BFA}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,2.7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:13px;line-height:1.15}
+.desc{color:var(--muted);font-size:.92rem;line-height:1.8;max-width:520px;margin-bottom:48px}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1px solid var(--borda);border-radius:18px;overflow:hidden;margin-bottom:72px}
+.pil{padding:38px;position:relative}
+.pil:first-child{background:linear-gradient(135deg,rgba(10,95,232,.1),transparent);border-right:1px solid var(--borda)}
+.pil:last-child{background:linear-gradient(135deg,rgba(123,92,234,.1),transparent)}
+.pil-ico{font-size:1.9rem;margin-bottom:14px}
+.pil h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:9px}
+.pil p{color:var(--muted);font-size:.85rem;line-height:1.68}
+.pbadge{position:absolute;top:14px;right:14px;border-radius:5px;padding:3px 9px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.pbadge.az{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);color:var(--ciano)}
+.pbadge.vd{background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.2);color:var(--verde)}
+.sec-erp{background:var(--bg2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.sc{background:var(--bg3);border:1px solid var(--borda);border-radius:14px;padding:26px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,95,232,.06),transparent);opacity:0;transition:opacity .3s}
+.sc:hover{border-color:rgba(0,212,255,.25);transform:translateY(-4px)}
+.sc:hover::after{opacity:1}
+.sc-ico{width:42px;height:42px;background:rgba(10,95,232,.15);border:1px solid rgba(0,212,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px}
+.sc h3{font-family:'Syne',sans-serif;font-size:.96rem;font-weight:700;margin-bottom:7px}
+.sc p{color:var(--muted);font-size:.82rem;line-height:1.62}
+.sarrow{display:inline-flex;align-items:center;gap:5px;color:var(--ciano);font-size:.76rem;font-weight:600;margin-top:14px;cursor:pointer;transition:gap .2s}
+.sarrow:hover{gap:9px}
+.sec-fiscal{background:linear-gradient(135deg,rgba(10,95,232,.04),rgba(0,212,255,.02));border-top:1px solid var(--borda);border-bottom:1px solid var(--borda)}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:44px}
+.mod{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:9px;transition:border-color .2s}
+.mod:hover{border-color:rgba(0,212,255,.28)}
+.moddot{width:7px;height:7px;border-radius:50%;background:var(--azul);flex-shrink:0}
+.mname{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700}
+.mdesc{font-size:.7rem;color:var(--muted);margin-top:2px}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.oalert{background:rgba(255,165,0,.05);border:1px solid rgba(255,165,0,.15);border-radius:12px;padding:18px;margin-bottom:22px}
+.oatitle{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:#F59E0B;margin-bottom:7px}
+.oalert p{font-size:.82rem;color:var(--muted);line-height:1.62}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:14px;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;left:15px;top:42px;bottom:-6px;width:2px;background:linear-gradient(to bottom,rgba(10,95,232,.4),transparent)}
+.snum{width:32px;height:32px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;color:#fff;flex-shrink:0;margin-top:3px}
+.sbody{padding-bottom:24px}
+.sbody h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:5px}
+.sbody p{color:var(--muted);font-size:.82rem;line-height:1.58}
+.conf-list{display:flex;flex-direction:column;gap:9px}
+.citem{display:flex;align-items:center;gap:9px;font-size:.83rem}
+.cico{width:22px;height:22px;background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--verde);flex-shrink:0}
+.sec-ia{background:var(--bg2)}
+.flow{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;margin-bottom:44px}
+.fn{background:var(--bg3);border:1px solid var(--borda);border-radius:12px;padding:14px 16px;text-align:center;min-width:100px;transition:border-color .3s,transform .3s}
+.fn:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px)}
+.fn-ico{font-size:1.4rem;display:block;margin-bottom:5px}
+.fn-nm{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700}
+.fn-sb{font-size:.62rem;color:var(--muted);margin-top:2px}
+.fn.hl{border-color:rgba(123,92,234,.3);background:linear-gradient(135deg,rgba(123,92,234,.1),rgba(0,212,255,.04))}
+.fn.hl .fn-nm{background:var(--grad-roxo);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.farr{color:rgba(0,212,255,.4);font-size:.95rem;flex-shrink:0}
+.ibens{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:44px}
+.ib{background:var(--bg3);border:1px solid var(--borda);border-radius:13px;padding:22px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.ib::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-roxo);opacity:0;transition:opacity .3s}
+.ib:hover{border-color:rgba(123,92,234,.25);transform:translateY(-3px)}
+.ib:hover::before{opacity:1}
+.ib-ico{font-size:1.3rem;margin-bottom:11px}
+.ib h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:6px}
+.ib p{color:var(--muted);font-size:.8rem;line-height:1.6}
+.ib-stat{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;background:var(--grad-roxo);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:11px}
+.demo-wrap{background:linear-gradient(135deg,rgba(123,92,234,.08),rgba(0,212,255,.03));border:1px solid rgba(123,92,234,.14);border-radius:22px;padding:40px;position:relative;overflow:hidden;margin-bottom:52px}
+.demo-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-roxo)}
+.demo-g{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.chat{background:#0a1120;border:1px solid rgba(255,255,255,.06);border-radius:15px;padding:17px;display:flex;flex-direction:column;gap:9px}
+.ch{display:flex;align-items:center;gap:9px;padding-bottom:11px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:3px}
+.cav{width:28px;height:28px;background:var(--grad-roxo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.cnm{font-weight:600;font-size:.8rem}
+.cst{font-size:.62rem;color:#00FF88}
+.msg{display:flex;gap:6px;max-width:86%}
+.msg.b{align-self:flex-start}
+.msg.u{align-self:flex-end;flex-direction:row-reverse}
+.bub{padding:8px 12px;border-radius:10px;line-height:1.5;font-size:.74rem}
+.msg.b .bub{background:rgba(123,92,234,.15);border:1px solid rgba(123,92,234,.2);border-bottom-left-radius:3px}
+.msg.u .bub{background:var(--azul);color:#fff;border-bottom-right-radius:3px}
+.mt{font-size:.6rem;color:var(--muted);align-self:flex-end;flex-shrink:0}
+.typing{display:flex;align-items:center;gap:3px;padding:8px 12px;background:rgba(123,92,234,.1);border-radius:10px;border-bottom-left-radius:3px;width:fit-content}
+.typing span{width:5px;height:5px;background:var(--ciano);border-radius:50%;animation:typ 1.2s ease-in-out infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typ{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+.ia-inf h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:11px;letter-spacing:-.02em}
+.ia-inf p{color:var(--muted);font-size:.86rem;line-height:1.72;margin-bottom:18px}
+.chk-list{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.chk{display:flex;align-items:center;gap:8px;font-size:.82rem}
+.chkico{width:19px;height:19px;background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--verde);flex-shrink:0}
+.planos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:48px}
+.plano{background:var(--bg3);border:1px solid var(--borda);border-radius:17px;padding:26px;transition:border-color .3s,transform .3s;position:relative}
+.plano:hover{transform:translateY(-4px);border-color:rgba(123,92,234,.28)}
+.plano.hl{border-color:rgba(123,92,234,.38);background:linear-gradient(135deg,rgba(123,92,234,.08),rgba(0,212,255,.03))}
+.plano.hl::before{content:'MAIS POPULAR';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--grad-roxo);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.1em;padding:3px 11px;border-radius:100px}
+.pnome{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:5px}
+.ppreco{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;background:var(--grad-roxo);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.pper{font-size:.72rem;color:var(--muted);margin-bottom:18px}
+.pfeats{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pf{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted)}
+.pf::before{content:'✓';color:var(--ciano);font-weight:700;flex-shrink:0}
+.sobre-g{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
+.svis{position:relative}
+.sbox{background:linear-gradient(135deg,var(--azul-esc),rgba(0,212,255,.08));border:1px solid var(--borda);border-radius:16px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:3.2rem;overflow:hidden;position:relative}
+.sbox::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(255,255,255,.018) 27px,rgba(255,255,255,.018) 28px)}
+.s4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.sb{background:var(--bg3);border:1px solid var(--borda);border-radius:9px;padding:14px;text-align:center}
+.sbn{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sbl{font-size:.68rem;color:var(--muted);margin-top:2px}
+.scont p{color:var(--muted);font-size:.9rem;line-height:1.78;margin-bottom:13px}
+.disc{background:rgba(255,165,0,.04);border:1px solid rgba(255,165,0,.12);border-radius:9px;padding:12px 15px;font-size:.72rem;color:rgba(255,165,0,.62);line-height:1.58;margin-top:18px}
+.dif-bg{background:var(--bg2)}
+.difs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.dif{border-left:2px solid var(--azul);padding:17px 20px;background:rgba(10,95,232,.04);border-radius:0 10px 10px 0;transition:border-color .2s}
+.dif:hover{border-color:var(--ciano)}
+.dif h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:6px}
+.dif p{color:var(--muted);font-size:.81rem;line-height:1.58}
+.arts{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.art{background:var(--bg2);border:1px solid var(--borda);border-radius:13px;overflow:hidden;transition:transform .3s,border-color .3s;cursor:pointer}
+.art:hover{transform:translateY(-4px);border-color:rgba(10,95,232,.35)}
+.art-img{height:130px;background:linear-gradient(135deg,var(--azul-esc),rgba(0,212,255,.12));display:flex;align-items:center;justify-content:center;font-size:2rem;border-bottom:1px solid var(--borda)}
+.art-b{padding:18px}
+.atag{display:inline-block;background:rgba(10,95,232,.13);color:var(--ciano);padding:3px 9px;border-radius:4px;font-size:.67rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:9px}
+.art-b h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:7px;line-height:1.38}
+.art-b p{color:var(--muted);font-size:.79rem;line-height:1.58}
+.ameta{display:flex;justify-content:space-between;font-size:.69rem;color:var(--muted);margin-top:12px;padding-top:11px;border-top:1px solid var(--borda)}
+.cta-bg{background:var(--bg2);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);text-align:center}
+.cta-in{max-width:660px;margin:0 auto;position:relative}
+.cglow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:190px;background:radial-gradient(ellipse,rgba(10,95,232,.22) 0%,transparent 65%);pointer-events:none}
+.cta-in h2,.cta-in p{position:relative;z-index:1}
+.cta-in p{color:var(--muted);font-size:.92rem;line-height:1.72;margin-bottom:28px}
+.cg{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;max-width:1000px;margin:0 auto}
+.cinfo h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:20px}
+.ci{display:flex;align-items:flex-start;gap:11px;margin-bottom:16px}
+.ci-ico{width:32px;height:32px;background:rgba(10,95,232,.13);border:1px solid rgba(10,95,232,.18);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0}
+.ci-lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.ci-val{font-size:.86rem;font-weight:500}
+.form{display:flex;flex-direction:column;gap:13px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:.7rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.fg input,.fg textarea,.fg select{background:var(--bg3);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:10px 14px;color:var(--texto);font-family:'DM Sans',sans-serif;font-size:.87rem;transition:border-color .2s;outline:none}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--azul)}
+.fg textarea{height:105px;resize:vertical}
+.fg select option{background:var(--bg3)}
+footer{background:var(--bg);border-top:1px solid var(--borda);padding:52px 5% 26px}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.fb p{color:var(--muted);font-size:.81rem;line-height:1.7;margin-top:9px;margin-bottom:16px;max-width:240px}
+.socs{display:flex;gap:7px}
+.soc{width:32px;height:32px;background:var(--bg3);border:1px solid var(--borda);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.78rem;cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none;color:var(--texto)}
+.soc:hover{border-color:var(--ciano);transform:translateY(-2px)}
+.fc h4{font-family:'Syne',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:13px;color:var(--muted)}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fc a{color:var(--muted);text-decoration:none;font-size:.81rem;transition:color .2s}
+.fc a:hover{color:var(--ciano)}
+.fbot{border-top:1px solid var(--borda);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbot p{font-size:.74rem;color:var(--muted)}
+.cnpj{font-size:.7rem;color:rgba(255,255,255,.17)}
+@media(max-width:900px){.hero-in,.sobre-g,.og,.demo-g,.cg{grid-template-columns:1fr}.hvis{display:none}.dual{grid-template-columns:1fr}.pil:first-child{border-right:none;border-bottom:1px solid var(--borda)}.ft{grid-template-columns:1fr 1fr}.farr{display:none}}
+@media(max-width:580px){section{padding:64px 4%}.ft{grid-template-columns:1fr}.s4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><em>MRS</em> Serviços e Informática</div>
+  <ul>
+    <li><a href="#erp">ERP Protheus</a></li>
+    <li><a href="#fiscal">Fiscal</a></li>
+    <li><a href="#automacao" class="nav-ia">IA & Automação ✦</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#contato" class="nav-cta">Solicitar proposta →</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="glow glow1"></div><div class="glow glow2"></div>
+  <div class="hero-in">
+    <div>
+      <div class="pill">ERP + IA para pequenas e médias empresas</div>
+      <h1>Consultoria <span class="g">especializada</span> em ERP e <span class="gp">Automação com IA</span></h1>
+      <p class="sub">Da otimização do Protheus e regularização de obrigações fiscais à automação do atendimento com Inteligência Artificial — soluções integradas para o seu negócio crescer.</p>
+      <div class="btns">
+        <a href="#contato" class="btn btn-p">Solicitar proposta →</a>
+        <a href="#automacao" class="btn btn-r">IA & Automação ✦</a>
+        <a href="#erp" class="btn btn-o">Ver ERP Protheus</a>
+      </div>
+    </div>
+    <div class="hvis">
+      <div class="fbadge tl">🤖 IA Ativa 24h</div>
+      <div class="hcard">
+        <div class="clbl">📊 Resultado dos clientes</div>
+        <div class="mets">
+          <div class="met"><div class="mn">+12</div><div class="ml">Anos de experiência</div></div>
+          <div class="met"><div class="mn">98%</div><div class="ml">Satisfação</div></div>
+          <div class="met"><div class="mn">24/7</div><div class="ml">Bot ativo</div></div>
+          <div class="met"><div class="mn">-60%</div><div class="ml">Redução de faltas</div></div>
+        </div>
+        <div class="st"><div class="dot"></div>Protheus + IA — monitorados</div>
+      </div>
+      <div class="fbadge br">⚡ ERP Otimizado</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-in">
+    <span class="slbl">Módulos Protheus</span><div class="sdiv"></div>
+    <div class="stags">
+      <span class="stag">SIGAFAT</span><span class="stag">SIGACTB</span><span class="stag">SIGATAF</span>
+      <span class="stag">SIGACFG</span><span class="stag">SIGAFIS</span><span class="stag">SIGAFIN</span>
+      <span class="stag">SIGAEST</span><span class="stag">SIGACOM</span><span class="stag">ADVPL</span>
+      <span class="stag ia">🤖 IA WhatsApp</span><span class="stag ia">🤖 Agendamento IA</span><span class="stag ia">🤖 Obrigações Fiscais IA</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="mx">
+    <div class="stag2 az" style="text-align:center">Nossa proposta</div>
+    <h2 style="text-align:center;margin-bottom:9px">Dois pilares. Uma empresa. <span class="g">Resultado completo.</span></h2>
+    <p style="text-align:center;color:var(--muted);font-size:.9rem;max-width:560px;margin:0 auto 36px">A MRS une expertise técnica em ERP Protheus com automação por IA para pequenos e médios negócios.</p>
+    <div class="dual">
+      <div class="pil">
+        <div class="pbadge az">Desde 2012</div>
+        <div class="pil-ico">🏗️</div>
+        <h3 class="g">Consultoria ERP Protheus</h3>
+        <p>Suporte técnico, implantação, regularização fiscal e customização ADVPL. Para empresas que precisam do Protheus funcionando perfeitamente e em conformidade.</p>
+      </div>
+      <div class="pil">
+        <div class="pbadge vd">Novo ✦</div>
+        <div class="pil-ico">🤖</div>
+        <h3 class="gp">Automação com IA</h3>
+        <p>Bot de atendimento no WhatsApp, agendamento automático e automação de obrigações fiscais. Para clínicas, consultórios e pequenas empresas que querem crescer sem contratar mais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-erp" id="erp">
+  <div class="mx">
+    <div class="stag2 az">Consultoria ERP</div>
+    <h2>Soluções especializadas em <span class="g">Protheus</span></h2>
+    <p class="desc">Da implantação ao suporte contínuo — com profissionais certificados e metodologia própria para maximizar o potencial do seu ERP.</p>
+    <div class="cards">
+      <div class="sc"><div class="sc-ico">⚙️</div><h3>Suporte Técnico N1/N2/N3</h3><p>Diagnóstico e resolução ágil no Protheus. SLA definido e documentação completa de cada chamado.</p><div class="sarrow">Saiba mais →</div></div>
+      <div class="sc"><div class="sc-ico">📋</div><h3>Consultoria em Processos</h3><p>Mapeamento e otimização de fluxos operacionais integrados ao ERP, reduzindo retrabalho da equipe.</p><div class="sarrow">Saiba mais →</div></div>
+      <div class="sc"><div class="sc-ico">🔒</div><h3>Segurança da Informação</h3><p>Auditoria de acessos, perfis de segurança e conformidade com LGPD no ambiente Protheus.</p><div class="sarrow">Saiba mais →</div></div>
+      <div class="sc"><div class="sc-ico">🏗️</div><h3>Implantação e Atualização</h3><p>Planejamento e execução de implantações, atualizações de versão com mínimo impacto na operação.</p><div class="sarrow">Saiba mais →</div></div>
+      <div class="sc"><div class="sc-ico">🎓</div><h3>Capacitação e Treinamentos</h3><p>Trilhas para equipes de TI e usuários-chave. Curso completo disponível na Udemy.</p><div class="sarrow">Ver curso →</div></div>
+      <div class="sc"><div class="sc-ico">🔧</div><h3>Customizações ADVPL</h3><p>Desenvolvimento de customizações, integrações e automações usando ADVPL/TL++ com documentação técnica.</p><div class="sarrow">Saiba mais →</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-fiscal" id="fiscal">
+  <div class="mx">
+    <div class="stag2 vd">Especialidade Fiscal</div>
+    <h2>Módulos fiscais e <span class="g">regularização de obrigações atrasadas</span></h2>
+    <p class="desc">Domínio completo dos módulos fiscais do Protheus. Regularização da base de dados e entrega de obrigações atrasadas com conformidade legal total.</p>
+    <div class="mods">
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGAFAT</div><div class="mdesc">Faturamento</div></div></div>
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGACTB</div><div class="mdesc">Contabilidade</div></div></div>
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGATAF</div><div class="mdesc">Tax Apuration Fiscal</div></div></div>
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGACFG</div><div class="mdesc">Configurador</div></div></div>
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGAFIS</div><div class="mdesc">Livros Fiscais</div></div></div>
+      <div class="mod"><div class="moddot"></div><div><div class="mname">SIGAFIN</div><div class="mdesc">Financeiro</div></div></div>
+    </div>
+    <div class="og">
+      <div>
+        <div class="oalert">
+          <div class="oatitle">⚠️ Obrigações fiscais em atraso?</div>
+          <p>Inconsistências fiscais acumuladas geram risco de autuação. A MRS atua na regularização completa da base de dados do Protheus e na entrega das obrigações atrasadas com segurança e conformidade legal.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="snum">1</div><div class="sbody"><h3>Diagnóstico da base</h3><p>Levantamento completo das inconsistências fiscais — SPED, NF-e, apuração de impostos.</p></div></div>
+          <div class="step"><div class="snum">2</div><div class="sbody"><h3>Regularização com IA</h3><p>Automação para identificar, corrigir e validar registros fiscais em massa com muito mais agilidade.</p></div></div>
+          <div class="step"><div class="snum">3</div><div class="sbody"><h3>Entrega das obrigações</h3><p>Geração e transmissão de SPED Fiscal, SPED Contribuições, EFD-REINF, DIRF em conformidade legal.</p></div></div>
+          <div class="step"><div class="snum">4</div><div class="sbody"><h3>Prevenção futura</h3><p>Configuração de alertas e rotinas preventivas no Protheus para manter a empresa sempre em dia.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:18px">Conformidades atendidas</h3>
+        <div class="conf-list">
+          <div class="citem"><div class="cico">✓</div>SPED Fiscal (EFD-ICMS/IPI)</div>
+          <div class="citem"><div class="cico">✓</div>SPED Contribuições (EFD-PIS/COFINS)</div>
+          <div class="citem"><div class="cico">✓</div>EFD-REINF</div>
+          <div class="citem"><div class="cico">✓</div>NF-e / NFS-e / CT-e</div>
+          <div class="citem"><div class="cico">✓</div>DIRF e DCTF</div>
+          <div class="citem"><div class="cico">✓</div>Apuração ICMS, PIS, COFINS, IPI</div>
+          <div class="citem"><div class="cico">✓</div>Configurador de Tributos (SIGACFG)</div>
+          <div class="citem"><div class="cico">✓</div>Conformidade com legislação vigente</div>
+          <div class="citem"><div class="cico">✓</div>Adequação LGPD nos dados fiscais</div>
+        </div>
+        <a href="#contato" class="btn btn-p" style="margin-top:26px">Regularizar minha empresa →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-ia" id="automacao">
+  <div class="mx">
+    <div class="stag2 rx" style="text-align:center">✦ Novo serviço</div>
+    <h2 style="text-align:center;margin-bottom:9px">Automação com <span class="gp">Inteligência Artificial</span></h2>
+    <p style="text-align:center;color:var(--muted);font-size:.9rem;max-width:540px;margin:0 auto 44px">Para clínicas, consultórios e pequenos negócios que querem atender mais, errar menos e crescer sem contratar.</p>
+    <div class="flow">
+      <div class="fn"><span class="fn-ico">📱</span><div class="fn-nm">Cliente</div><div class="fn-sb">WhatsApp</div></div>
+      <div class="farr">→</div>
+      <div class="fn hl"><span class="fn-ico">🤖</span><div class="fn-nm">IA MRS</div><div class="fn-sb">Interpreta</div></div>
+      <div class="farr">→</div>
+      <div class="fn"><span class="fn-ico">📅</span><div class="fn-nm">Agendamento</div><div class="fn-sb">Automático</div></div>
+      <div class="farr">→</div>
+      <div class="fn"><span class="fn-ico">✅</span><div class="fn-nm">Confirmação</div><div class="fn-sb">Imediata</div></div>
+      <div class="farr">→</div>
+      <div class="fn"><span class="fn-ico">🔔</span><div class="fn-nm">Lembrete</div><div class="fn-sb">24h antes</div></div>
+      <div class="farr">→</div>
+      <div class="fn hl"><span class="fn-ico">📊</span><div class="fn-nm">Dashboard</div><div class="fn-sb">Resultado</div></div>
+    </div>
+    <div class="ibens">
+      <div class="ib"><div class="ib-ico">🕐</div><h3>Atendimento 24h</h3><p>Responde a qualquer hora, sem custo extra de equipe noturna.</p><div class="ib-stat">24/7</div></div>
+      <div class="ib"><div class="ib-ico">📉</div><h3>Menos faltas</h3><p>Lembretes automáticos com opção de confirmar ou reagendar.</p><div class="ib-stat">-60%</div></div>
+      <div class="ib"><div class="ib-ico">⚡</div><h3>Resposta imediata</h3><p>Bot responde em menos de 3 segundos. Nenhum cliente fica sem retorno.</p><div class="ib-stat">&lt;3s</div></div>
+      <div class="ib"><div class="ib-ico">📈</div><h3>Mais agendamentos</h3><p>Captura demandas fora do horário que antes eram perdidas.</p><div class="ib-stat">+40%</div></div>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo-g">
+        <div class="chat">
+          <div class="ch"><div class="cav">🏥</div><div><div class="cnm">Clínica Saúde+</div><div class="cst">● Assistente ativo</div></div></div>
+          <div class="msg b"><div class="bub">Olá! 👋 Sou o assistente da Clínica Saúde+. Como posso te ajudar hoje?</div><div class="mt">09:12</div></div>
+          <div class="msg u"><div class="bub">Quero agendar com cardiologista</div><div class="mt">09:13</div></div>
+          <div class="msg b"><div class="bub">Temos horários com Dr. Ricardo amanhã às 14h ou quinta às 10h. Qual prefere? 🩺</div><div class="mt">09:13</div></div>
+          <div class="msg u"><div class="bub">Quinta às 10h</div><div class="mt">09:13</div></div>
+          <div class="msg b"><div class="bub">✅ Consulta agendada! Quinta, 10h, Dr. Ricardo. Vou te lembrar na véspera. Algo mais?</div><div class="mt">09:13</div></div>
+          <div class="msg u"><div class="bub">Não, obrigado!</div><div class="mt">09:14</div></div>
+          <div class="msg b"><div class="typing"><span></span><span></span><span></span></div></div>
+        </div>
+        <div class="ia-inf">
+          <h3>Tudo isso sem <span style="background:var(--grad-roxo);-webkit-background-clip:text;-webkit-text-fill-color:transparent">nenhuma intervenção humana</span></h3>
+          <p>Em menos de 2 minutos o paciente foi atendido, escolheu o horário e está na agenda. A clínica não tocou no telefone.</p>
+          <div class="chk-list">
+            <div class="chk"><div class="chkico">✓</div>Funciona no WhatsApp atual do negócio</div>
+            <div class="chk"><div class="chkico">✓</div>IA personalizada com dados da empresa</div>
+            <div class="chk"><div class="chkico">✓</div>Agenda integrada com Google Sheets / Calendar</div>
+            <div class="chk"><div class="chkico">✓</div>Lembrete automático 24h antes</div>
+            <div class="chk"><div class="chkico">✓</div>Dashboard de atendimentos em tempo real</div>
+            <div class="chk"><div class="chkico">✓</div>Implantação em até 7 dias úteis</div>
+          </div>
+          <a href="#contato" class="btn btn-r">Quero esse sistema →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="stag2 rx">Planos</div>
+      <h2 style="margin-bottom:5px">Investimento <span class="gp">mensal</span></h2>
+      <p style="color:var(--muted);font-size:.85rem">Sem taxa de setup. Cancele quando quiser.</p>
+    </div>
+    <div class="planos">
+      <div class="plano">
+        <div class="pnome">Starter</div><div class="ppreco">R$497</div><div class="pper">/mês · 1 WhatsApp</div>
+        <div class="pfeats"><div class="pf">Atendimento automático 24h</div><div class="pf">Fluxo de agendamento</div><div class="pf">Lembrete 24h antes</div><div class="pf">Relatório mensal</div><div class="pf">Suporte via WhatsApp</div></div>
+        <a href="#contato" class="btn btn-o" style="width:100%;justify-content:center">Começar →</a>
+      </div>
+      <div class="plano hl">
+        <div class="pnome">Profissional</div><div class="ppreco">R$797</div><div class="pper">/mês · 1 WhatsApp</div>
+        <div class="pfeats"><div class="pf">Tudo do Starter</div><div class="pf">IA com GPT-4o</div><div class="pf">Google Calendar integrado</div><div class="pf">Lembrete 24h + 1h antes</div><div class="pf">Dashboard em tempo real</div><div class="pf">Suporte prioritário</div></div>
+        <a href="#contato" class="btn btn-r" style="width:100%;justify-content:center">Começar →</a>
+      </div>
+      <div class="plano">
+        <div class="pnome">Empresarial</div><div class="ppreco">Custom</div><div class="pper">Sob medida</div>
+        <div class="pfeats"><div class="pf">Múltiplos WhatsApps</div><div class="pf">IA + ERP Protheus integrados</div><div class="pf">Obrigações fiscais automatizadas</div><div class="pf">Integração com sistema próprio</div><div class="pf">SLA dedicado</div></div>
+        <a href="#contato" class="btn btn-o" style="width:100%;justify-content:center">Consultar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="mx">
+    <div class="sobre-g">
+      <div class="svis">
+        <div class="sbox">🏢</div>
+        <div class="s4">
+          <div class="sb"><div class="sbn">+12</div><div class="sbl">Anos no mercado</div></div>
+          <div class="sb"><div class="sbn">SP</div><div class="sbl">São Paulo – SP</div></div>
+          <div class="sb"><div class="sbn">B2B</div><div class="sbl">Foco em empresas</div></div>
+          <div class="sb"><div class="sbn">100%</div><div class="sbl">Independente</div></div>
+        </div>
+      </div>
+      <div class="scont">
+        <div class="stag2 az">Quem somos</div>
+        <h2>A <span class="g">MRS</span> por trás do seu negócio</h2>
+        <p>A MRS Serviços e Informática é uma consultoria especializada em tecnologia, com foco no suporte ao ERP Protheus e no desenvolvimento de soluções de automação com IA para pequenos e médios negócios.</p>
+        <p>Unimos o conhecimento técnico em ERP com a inovação da Inteligência Artificial para entregar soluções completas — sem você precisar contratar dois fornecedores diferentes.</p>
+        <div class="btns" style="margin-top:6px"><a href="#contato" class="btn btn-p">Fale com a equipe →</a></div>
+        <div class="disc">⚠️ A MRS Serviços e Informática é empresa independente, sem vínculo com a TOTVS S.A. A marca "TOTVS" é propriedade da TOTVS S.A., fabricante do ERP "Protheus".</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dif-bg">
+  <div class="mx">
+    <div class="stag2 az">Diferenciais</div>
+    <h2>Por que escolher a <span class="g">MRS</span>?</h2>
+    <p class="desc">ERP e IA no mesmo parceiro. Sem coordenar dois fornecedores. Sem perder tempo.</p>
+    <div class="difs">
+      <div class="dif"><h3>🎯 Solução integrada</h3><p>ERP Protheus e automação com IA no mesmo parceiro. Menos fornecedores, mais resultado.</p></div>
+      <div class="dif"><h3>🏆 Especialistas certificados</h3><p>Profissionais com anos de experiência em Protheus e IA aplicada a negócios reais.</p></div>
+      <div class="dif"><h3>⚡ Implantação rápida</h3><p>IA ativa em até 7 dias. ERP ajustado sem impacto na operação.</p></div>
+      <div class="dif"><h3>📞 Suporte ágil</h3><p>SLA definido, comunicação clara e resposta rápida em cada chamado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="artigos">
+  <div class="mx">
+    <div class="stag2 az">Conteúdo</div>
+    <h2>Artigos e <span class="g">boas práticas</span></h2>
+    <p class="desc">Conhecimento especializado em Protheus e automação com IA.</p>
+    <div class="arts">
+      <div class="art"><div class="art-img">🔒</div><div class="art-b"><div class="atag">Segurança</div><h3>Melhores práticas de segurança da informação no Protheus</h3><p>Como proteger dados e garantir conformidade em ambientes ERP.</p><div class="ameta"><span>26 jul 2025</span><span>4 min</span></div></div></div>
+      <div class="art"><div class="art-img">🏗️</div><div class="art-b"><div class="atag">Infraestrutura</div><h3>Implementando soluções de infraestrutura eficientes no Protheus</h3><p>Estratégias para garantir performance e estabilidade no seu ERP.</p><div class="ameta"><span>26 jul 2025</span><span>4 min</span></div></div></div>
+      <div class="art"><div class="art-img">🤖</div><div class="art-b"><div class="atag">IA</div><h3>Como IA está reduzindo faltas em clínicas em até 60%</h3><p>Casos reais de automação de atendimento com WhatsApp e IA generativa.</p><div class="ameta"><span>Abr 2026</span><span>5 min</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-bg">
+  <div class="cta-in">
+    <div class="cglow"></div>
+    <div class="stag2 az" style="text-align:center">Pronto para começar?</div>
+    <h2>ERP otimizado. IA ativa. <span class="g">Negócio crescendo.</span></h2>
+    <p>Entre em contato e descubra qual solução faz mais sentido para o seu momento agora.</p>
+    <div class="btns" style="justify-content:center">
+      <a href="#contato" class="btn btn-p">Solicitar proposta gratuita →</a>
+      <a href="https://www.udemy.com/course/domine-o-configurador-de-tributos-no-totvs-protheus/?referralCode=56908F4F412EDF7AC914" target="_blank" class="btn btn-o">Ver treinamentos Udemy</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="mx">
+    <div class="stag2 az">Contato</div>
+    <h2>Fale com a <span class="g">nossa equipe</span></h2>
+    <p class="desc">Preencha e retornamos em até 24h com a melhor proposta para você.</p>
+    <div class="cg">
+      <div class="cinfo">
+        <h3>Informações de contato</h3>
+        <div class="ci"><div class="ci-ico">📞</div><div><div class="ci-lbl">WhatsApp</div><div class="ci-val">(11) 91917-86627</div></div></div>
+        <div class="ci"><div class="ci-ico">✉️</div><div><div class="ci-lbl">E-mail</div><div class="ci-val">marcos@mrsservicosti.com.br</div></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div><div class="ci-lbl">Endereço</div><div class="ci-val">Rua Olivio Basilio Marçal, 490<br>São Paulo – SP, 06172-226</div></div></div>
+        <div class="ci"><div class="ci-ico">🏢</div><div><div class="ci-lbl">CNPJ</div><div class="ci-val">61.323.561/0001-16</div></div></div>
+      </div>
+      <form class="form" onsubmit="return false">
+        <div class="fg"><label>Nome completo</label><input type="text" placeholder="Seu nome"/></div>
+        <div class="fg"><label>E-mail</label><input type="email" placeholder="seu@empresa.com"/></div>
+        <div class="fg"><label>Empresa</label><input type="text" placeholder="Nome da empresa"/></div>
+        <div class="fg">
+          <label>Serviço de interesse</label>
+          <select>
+            <option value="">Selecione um serviço</option>
+            <optgroup label="ERP Protheus">
+              <option>Suporte Técnico Protheus</option>
+              <option>Consultoria em Processos</option>
+              <option>Regularização Fiscal / Obrigações Atrasadas</option>
+              <option>Implantação / Atualização</option>
+              <option>Customização ADVPL</option>
+              <option>Treinamento Protheus</option>
+            </optgroup>
+            <optgroup label="Automação com IA">
+              <option>Bot de Atendimento WhatsApp</option>
+              <option>Agendamento Automático</option>
+              <option>Automação de Obrigações Fiscais</option>
+              <option>Plano Empresarial (ERP + IA)</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="fg"><label>Mensagem</label><textarea placeholder="Descreva sua necessidade..."></textarea></div>
+        <button type="submit" class="btn btn-p">Enviar mensagem →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <div class="logo"><em>MRS</em> Serviços e Informática</div>
+      <p>ERP Protheus e Automação com IA para pequenas e médias empresas. Soluções integradas, resultado real.</p>
+      <div class="socs">
+        <a href="https://www.linkedin.com/in/marcos-sampaio-/" target="_blank" class="soc">in</a>
+        <a href="#" class="soc">fb</a><a href="#" class="soc">ig</a>
+      </div>
+    </div>
+    <div class="fc"><h4>ERP Protheus</h4><ul><li><a href="#">Suporte Técnico</a></li><li><a href="#">Regularização Fiscal</a></li><li><a href="#">Implantação</a></li><li><a href="#">Treinamentos</a></li><li><a href="#">ADVPL</a></li></ul></div>
+    <div class="fc"><h4>IA & Automação</h4><ul><li><a href="#">Bot WhatsApp</a></li><li><a href="#">Agendamento IA</a></li><li><a href="#">Obrigações Fiscais IA</a></li><li><a href="#">Planos</a></li></ul></div>
+    <div class="fc"><h4>Empresa</h4><ul><li><a href="#">Quem somos</a></li><li><a href="#">Blog</a></li><li><a href="#">Termos de uso</a></li><li><a href="#">Privacidade</a></li></ul></div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 MRS Serviços e Informática. Todos os direitos reservados.</p>
+    <span class="cnpj">CNPJ 61.323.561/0001-16</span>
+  </div>
+</footer>
+
+</body>
+</html>
